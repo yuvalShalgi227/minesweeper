@@ -4,36 +4,55 @@
   padding: 2rem;
   text-align: center;
 }
-
 .mines-game {
   display: flex;
-  background-color: #aaa;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  margin-top: 1rem;
-  .row {
+  border: 2px solid #000;
+  background-color: #aaa;
+  .header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    background-color: #555;
+    color: #f00;
+    font-weight: bold;
   }
-  .cell {
-    box-sizing: border-box;
-    border: 2px outset #ddd;
+
+  .board {
     display: flex;
+    background-color: #aaa;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-weight: bold;
-    cursor: pointer;
+    margin-top: 1rem;
 
-    width: 1.5rem;
-    height: 1.5rem;
-    //border: 0.1rem solid #ccc;
-
-    &.mine {
-      background-color: red;
+    .row {
+      display: flex;
+      justify-content: center;
     }
-    &.safe {
-      background-color: green;
+
+    .cell {
+      box-sizing: border-box;
+      border: 2px outset #ddd;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      cursor: pointer;
+
+      width: 1.5rem;
+      height: 1.5rem;
+      //border: 0.1rem solid #ccc;
+
+      &.mine {
+        background-color: red;
+      }
+
+      &.safe {
+        background-color: green;
+      }
     }
   }
 }

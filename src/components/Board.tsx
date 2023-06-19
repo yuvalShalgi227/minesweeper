@@ -33,6 +33,8 @@ export const Board = ({
               {cell.isRevealed
                 ? cell.value === "mine"
                   ? "X"
+                  : cell.value === 0
+                  ? ""
                   : cell.value
                 : ""}
             </div>

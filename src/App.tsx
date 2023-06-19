@@ -4,7 +4,7 @@ function App() {
   return (
     <>
       <div>
-        <h1>Minesweeper</h1>
+        <h2>Minesweeper</h2>
       </div>
       <div className="game-wrapper">
         <Game />

@@ -3,17 +3,22 @@
   margin: 0 auto;
   //padding: 2rem;
   text-align: center;
+  font-family: "WindSong", cursive;
+  font-weight: 800;
+  font-style: italic;
 }
 .mines-game {
+  //font-family: "Kablammo", cursive;
+  font-family: "Roboto", sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  border: 1px solid #000;
+  box-shadow: 0 0 0 0.1rem darkslategrey;
+  //border: 1px double #1a1a1a;
   background-color: #aaa;
   .header {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
     width: 80%;
     height: 3rem;
@@ -28,6 +33,10 @@
       cursor: pointer;
       width: 1.5rem;
       height: 1.5rem;
+      overflow: hidden;
+      &.timer {
+        width: 4rem;
+      }
     }
   }
 
@@ -59,10 +68,12 @@
 
       &.mine {
         background-color: red;
+        border: 1px solid grey;
       }
 
       &.safe {
-        background-color: green;
+        //background-color: green;
+        border: 1px solid grey;
       }
     }
   }

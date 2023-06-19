@@ -71,6 +71,7 @@ export const UseGame = () => {
   const [gameOver, setGameOver] = useState(false);
   const [didWin, setDidWin] = useState(false);
   const [revealedCells, setRevealedCells] = useState(0);
+  const [startTime, setStartTime] = useState(Date.now());
 
   const revrealAll = () => {
     const newGrid = [...grid];
@@ -81,14 +82,59 @@ export const UseGame = () => {
     );
     setGrid(newGrid);
   };
+  const revealCell = (i: number, j: number) => {
+    let deph = 0;
+    const newGrid = JSON.parse(JSON.stringify(grid));
+    const dfs = (row: number, col: number) => {
+      deph++;
+      if (deph > 25) {
+        return;
+      }
+      if (
+        row < 0 ||
+        row >= dimensions ||
+        col < 0 ||
+        col >= dimensions ||
+        newGrid[row][col].isRevealed ||
+        newGrid[row][col].value === "mine"
+      ) {
+        return;
+      }
+
+      newGrid[row][col].isRevealed = true;
+      setRevealedCells((prev) => prev + 1);
+
+      // If the current cell has no adjacent mines, we perform DFS on its neighbors
+      if (newGrid[row][col].value === 0) {
+        dfs(row - 1, col);
+        dfs(row + 1, col);
+        dfs(row, col - 1);
+        dfs(row, col + 1);
+        dfs(row - 1, col - 1);
+        dfs(row - 1, col + 1);
+        dfs(row + 1, col - 1);
+        dfs(row + 1, col + 1);
+      }
+    };
+
+    dfs(i, j);
+
+    setGrid(newGrid);
+
+    // Continue with the rest of your revealCell function
+  };
 
   const handleClick = (rowIndex: number, colIndex: number) => {
     const newGrid = [...grid];
-    newGrid[rowIndex][colIndex] = {
-      ...newGrid[rowIndex][colIndex],
-      isRevealed: true,
-    };
-    setGrid(newGrid);
+    if (newGrid[rowIndex][colIndex].value === 0) {
+      revealCell(rowIndex, colIndex);
+    } else {
+      newGrid[rowIndex][colIndex] = {
+        ...newGrid[rowIndex][colIndex],
+        isRevealed: true,
+      };
+      setGrid(newGrid);
+    }
     if (grid[rowIndex][colIndex].value === "mine") {
       //alert("Game over!");
       revrealAll();
@@ -110,6 +156,15 @@ export const UseGame = () => {
     setGameOver(false);
     setDidWin(false);
     setRevealedCells(0);
+    setStartTime(Date.now());
   };
-  return { grid, gameOver, handleClick, didWin, revealedCells, resetGame };
+  return {
+    grid,
+    gameOver,
+    handleClick,
+    didWin,
+    revealedCells,
+    resetGame,
+    startTime,
+  };
 };

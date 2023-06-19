@@ -120,8 +120,6 @@ export const UseGame = () => {
     dfs(i, j);
 
     setGrid(newGrid);
-
-    // Continue with the rest of your revealCell function
   };
 
   const handleClick = (rowIndex: number, colIndex: number) => {
@@ -136,14 +134,13 @@ export const UseGame = () => {
       setGrid(newGrid);
     }
     if (grid[rowIndex][colIndex].value === "mine") {
-      //alert("Game over!");
       revrealAll();
       setGameOver(true);
     } else {
       setRevealedCells((prev) => prev + 1);
-      console.log(revealedCells);
-      if (revealedCells === safeCells) {
-        alert("You won!");
+      console.log("revealedCells", revealedCells);
+      console.log("safeCells", safeCells);
+      if (revealedCells + 5 > safeCells) {
         setDidWin(true);
         revrealAll();
         setGameOver(true);

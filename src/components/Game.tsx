@@ -24,7 +24,7 @@ export const Game = () => {
         gameOver={gameOver}
         didWin={didWin}
       />
-      <Board handleClick={handleClick} grid={grid} />
+      <Board handleClick={handleClick} grid={grid} didWin={didWin} />
     </div>
   );
 };

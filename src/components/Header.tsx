@@ -1,28 +1,39 @@
+import { useEffect, useState } from "react";
+
 type HeaderProps = {
   resetGame: () => void;
   mineCount: number;
-  elapsedTime: number;
+  startTime: number;
+  gameOver: boolean;
+  didWin: boolean;
 };
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 const Header: React.FC<HeaderProps> = ({
   resetGame,
   mineCount,
-  elapsedTime,
   gameOver,
+  startTime,
   didWin,
 }: {
   resetGame: () => void;
   mineCount: number;
-  elapsedTime: number;
+  startTime: number;
   gameOver: boolean;
   didWin: boolean;
 }) => {
   const didLose = gameOver && !didWin;
   const showPlay = "🙂";
   const showLose = "😵";
+  const [elapsedTime, setElapsedTime] = useState(0);
+  useEffect(() => {
+    if (!gameOver) {
+      const interval = setInterval(() => {
+        setElapsedTime(Math.floor((Date.now() - startTime) / 1000));
+      }, 1000);
 
+      return () => clearInterval(interval);
+    }
+  }, [gameOver, startTime]);
   return (
     <div className="header">
       <div className="header-inner mine-counter">

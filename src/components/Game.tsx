@@ -6,7 +6,7 @@ export const Game = () => {
   const { grid, gameOver, handleClick, didWin, resetGame, revealedCells } =
     UseGame();
   const endGameMessage = didWin ? "You Win!" : "Game Over";
-
+  const startTime = Date.now();
   console.log(grid);
   return (
     <div className="mines-game">
@@ -14,7 +14,7 @@ export const Game = () => {
       <Header
         resetGame={resetGame}
         mineCount={revealedCells}
-        elapsedTime={0}
+        startTime={startTime}
         gameOver={gameOver}
         didWin={didWin}
       />

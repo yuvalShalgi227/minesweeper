@@ -17,7 +17,7 @@ export const Board = ({
   if (!grid) {
     return null;
   }
-  console.log(grid);
+  const bomb = "💣";
   return (
     <div className="board">
       {grid.map((row: cellType[], rowIndex: number) => (
@@ -32,7 +32,7 @@ export const Board = ({
             >
               {cell.isRevealed
                 ? cell.value === "mine"
-                  ? "X"
+                  ? bomb
                   : cell.value === 0
                   ? ""
                   : cell.value

@@ -1,0 +1,33 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.mines-game {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  .row {
+    display: flex;
+    justify-content: center;
+  }
+  .cell {
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 0.1rem solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    &.mine {
+      background-color: red;
+    }
+    &.safe {
+      background-color: green;
+    }
+  }
+}

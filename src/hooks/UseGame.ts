@@ -105,5 +105,11 @@ export const UseGame = () => {
     }
   };
 
-  return { grid, gameOver, handleClick, didWin };
+  const resetGame = () => {
+    setGrid(initialGrid);
+    setGameOver(false);
+    setDidWin(false);
+    setRevealedCells(0);
+  };
+  return { grid, gameOver, handleClick, didWin, revealedCells, resetGame };
 };

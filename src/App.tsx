@@ -1,5 +1,5 @@
 import "./App.scss";
-import { Board } from "./components/Board.tsx";
+import { Game } from "./components/Game.tsx";
 function App() {
   return (
     <>
@@ -7,7 +7,7 @@ function App() {
         <h1>Minesweeper</h1>
       </div>
       <div className="game-wrapper">
-        <Board />
+        <Game />
       </div>
     </>
   );

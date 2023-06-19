@@ -45,7 +45,7 @@ const Header: React.FC<HeaderProps> = ({
       </div>
       <div className="header-inner timer">
         {/* Show the elapsed time */}
-        {elapsedTime}
+        {elapsedTime > 999 ? 999 : elapsedTime}
       </div>
     </div>
   );
